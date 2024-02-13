@@ -12,7 +12,7 @@ namespace hotels_worldwiden
         public static SqlConnection Conectar()
         {
             //Yosiney: DESKTOP-VTB1K29\SQLEXPRESS//
-            SqlConnection conectar = new SqlConnection("Server=DESKTOP-VTB1K29\\SQLEXPRESS;Database=BDProyectoFinal_progralV;Integrated Security=True;");
+            SqlConnection conectar = new SqlConnection("Server=DESKTOP-VTB1K29\\SQLEXPRESS;Database=hotels_worldwiden;Integrated Security=True;");
             conectar.Open();
             return conectar;
         }
