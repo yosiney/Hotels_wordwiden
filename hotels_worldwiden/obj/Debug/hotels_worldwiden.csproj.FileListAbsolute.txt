@@ -1,0 +1,13 @@
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\bin\Debug\hotels_worldwiden.exe.config
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\bin\Debug\hotels_worldwiden.exe
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\bin\Debug\hotels_worldwiden.pdb
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.csproj.AssemblyReference.cache
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Form1.resources
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Properties.Resources.resources
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.csproj.GenerateResource.cache
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.csproj.CoreCompileInputs.cache
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.exe
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.pdb
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Administracion_compras.resources
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Gerencia.resources
+C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Recepcion.resources
