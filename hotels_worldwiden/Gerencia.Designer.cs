@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Gerencia";
             this.Text = "Gerencia";
+            this.Load += new System.EventHandler(this.Gerencia_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

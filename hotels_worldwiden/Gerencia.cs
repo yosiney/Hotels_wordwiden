@@ -15,6 +15,17 @@ namespace hotels_worldwiden
         public Gerencia()
         {
             InitializeComponent();
+            // Configurar la posición de inicio del formulario al centro de la pantalla
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new System.Drawing.Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+                );
+        }
+
+        private void Gerencia_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

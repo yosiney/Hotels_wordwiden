@@ -22,7 +22,12 @@ namespace hotels_worldwiden
         public Form1()
         {
             InitializeComponent();
-            
+            // Configurar la posición de inicio del formulario al centro de la pantalla
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new System.Drawing.Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+                );
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,8 +36,24 @@ namespace hotels_worldwiden
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
+        
+        }
 
+        private void Form1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textNombre_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void HabilitarBotonEntrar()
+        {
+           
+        }
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
             try
             {
                 string selectQuery = "SELECT usuarioID, contraseña, estado FROM Usuarios WHERE CAST(usuarioID AS NVARCHAR(50)) = @usuarioID";
@@ -110,7 +131,7 @@ namespace hotels_worldwiden
                                         {
                                             string textbloqueado = "bloqueado";
 
-                                            string actualizarEstado = "UPDATE Usuarios set estado = @estado where usuarioID = " + cedula+"";
+                                            string actualizarEstado = "UPDATE Usuarios set estado = @estado where usuarioID = " + cedula + "";
 
                                             SqlCommand cmdActualizarEstado = new SqlCommand(actualizarEstado, Conexion.Conectar());
                                             {
@@ -130,7 +151,7 @@ namespace hotels_worldwiden
                                     MessageBox.Show("El usuario se encuentra bloqueado. Por favor, contacta al administrador.", "Cuenta Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
 
-                                
+
                             }
                             else
                             {
@@ -149,14 +170,37 @@ namespace hotels_worldwiden
             }
         }
 
-        private void Form1_TextChanged(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            
+            DialogResult resp = MessageBox.Show("Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resp == DialogResult.Yes)
+            {
+                // Cierra la aplicación cuando se cierra el formulario correspondiente al rol
+                Application.Exit();
+            }
         }
 
-        private void textNombre_MouseDown(object sender, MouseEventArgs e)
+        private void textcedula_TextChanged(object sender, EventArgs e)
         {
+            HabilitarBotonEntrar();
+        }
 
+        private void textContraseña_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBotonEntrar();
+        }
+
+        private void textcedula_Click(object sender, EventArgs e)
+        {
+            if (textcedula.Text == "Ingrese su cédula")
+                textcedula.Text = string.Empty;
+        }
+
+        private void textContraseña_Click(object sender, EventArgs e)
+        {
+            if (textContraseña.Text == "Ingrese su contraseña")
+                textContraseña.Text = string.Empty;
         }
     }
 }

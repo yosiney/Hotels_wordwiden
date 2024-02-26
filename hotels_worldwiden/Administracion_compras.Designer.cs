@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Administracion_compras";
             this.Text = "Administracion_compras";
+            this.Load += new System.EventHandler(this.Administracion_compras_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

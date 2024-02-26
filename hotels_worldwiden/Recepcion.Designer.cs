@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Recepcion";
             this.Text = "Recepcion";
+            this.Load += new System.EventHandler(this.Recepcion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
