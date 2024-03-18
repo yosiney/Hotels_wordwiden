@@ -40,9 +40,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -61,6 +59,24 @@
             this.comboestado = new System.Windows.Forms.ComboBox();
             this.combotipousuario = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboseEstado = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textseContra = new System.Windows.Forms.TextBox();
+            this.textseNombre = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textseCedula = new System.Windows.Forms.TextBox();
+            this.comboseTipo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -71,10 +87,17 @@
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -118,6 +141,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1120, 53);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // pictureBox3
             // 
@@ -144,8 +168,8 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Font = new System.Drawing.Font("Rockwell", 8.25F);
             this.tabControl1.Location = new System.Drawing.Point(207, 52);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -167,7 +191,6 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Location = new System.Drawing.Point(0, 6);
             this.tabControl2.Name = "tabControl2";
@@ -178,6 +201,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(221)))), ((int)(((byte)(203)))));
+            this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Controls.Add(this.combotipousuario);
             this.tabPage3.Controls.Add(this.comboestado);
             this.tabPage3.Controls.Add(this.label9);
@@ -201,6 +225,20 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(221)))), ((int)(((byte)(203)))));
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.comboseTipo);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.comboseEstado);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.textseContra);
+            this.tabPage4.Controls.Add(this.textseNombre);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.textseCedula);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.pictureBox7);
             this.tabPage4.Controls.Add(this.dataGridView1);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.pictureBox6);
@@ -210,19 +248,13 @@
             this.tabPage4.Size = new System.Drawing.Size(871, 306);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Modificar";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(871, 306);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Inhabilitar o habilitar";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.label17);
+            this.tabPage7.Controls.Add(this.pictureBox8);
+            this.tabPage7.Controls.Add(this.dataGridView3);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(871, 306);
@@ -230,18 +262,9 @@
             this.tabPage7.Text = "Eliminar usuarios del sistema";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(879, 338);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Gestion de perfiles";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.dataGridView4);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(879, 338);
@@ -295,18 +318,19 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(430, 241);
+            this.pictureBox6.Location = new System.Drawing.Point(494, 235);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(32, 32);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(416, 276);
+            this.label4.Location = new System.Drawing.Point(480, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 6;
@@ -314,7 +338,7 @@
             // 
             // textcedula
             // 
-            this.textcedula.Location = new System.Drawing.Point(155, 61);
+            this.textcedula.Location = new System.Drawing.Point(153, 24);
             this.textcedula.Name = "textcedula";
             this.textcedula.Size = new System.Drawing.Size(100, 20);
             this.textcedula.TabIndex = 3;
@@ -323,7 +347,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(34, 61);
+            this.label5.Location = new System.Drawing.Point(32, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 16);
             this.label5.TabIndex = 4;
@@ -333,7 +357,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(34, 95);
+            this.label6.Location = new System.Drawing.Point(32, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 16);
             this.label6.TabIndex = 5;
@@ -341,7 +365,7 @@
             // 
             // textnombre
             // 
-            this.textnombre.Location = new System.Drawing.Point(155, 95);
+            this.textnombre.Location = new System.Drawing.Point(153, 58);
             this.textnombre.Name = "textnombre";
             this.textnombre.Size = new System.Drawing.Size(100, 20);
             this.textnombre.TabIndex = 6;
@@ -350,7 +374,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(297, 95);
+            this.label7.Location = new System.Drawing.Point(295, 58);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(119, 16);
             this.label7.TabIndex = 9;
@@ -360,7 +384,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(297, 61);
+            this.label8.Location = new System.Drawing.Point(295, 24);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 16);
             this.label8.TabIndex = 8;
@@ -368,16 +392,16 @@
             // 
             // textcontra
             // 
-            this.textcontra.Location = new System.Drawing.Point(418, 61);
+            this.textcontra.Location = new System.Drawing.Point(416, 24);
             this.textcontra.Name = "textcontra";
-            this.textcontra.Size = new System.Drawing.Size(100, 20);
+            this.textcontra.Size = new System.Drawing.Size(121, 20);
             this.textcontra.TabIndex = 7;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(563, 61);
+            this.label9.Location = new System.Drawing.Point(561, 24);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 16);
             this.label9.TabIndex = 12;
@@ -390,10 +414,11 @@
             "disponible",
             "bloqueado",
             "fuera de servicio"});
-            this.comboestado.Location = new System.Drawing.Point(418, 94);
+            this.comboestado.Location = new System.Drawing.Point(416, 57);
             this.comboestado.Name = "comboestado";
             this.comboestado.Size = new System.Drawing.Size(121, 21);
             this.comboestado.TabIndex = 13;
+            this.comboestado.SelectedIndexChanged += new System.EventHandler(this.comboestado_SelectedIndexChanged);
             // 
             // combotipousuario
             // 
@@ -402,18 +427,195 @@
             "Gerente",
             "Adminstrador de compras",
             "Recepcionista"});
-            this.combotipousuario.Location = new System.Drawing.Point(668, 60);
+            this.combotipousuario.Location = new System.Drawing.Point(666, 23);
             this.combotipousuario.Name = "combotipousuario";
             this.combotipousuario.Size = new System.Drawing.Size(121, 21);
             this.combotipousuario.TabIndex = 14;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(54, 21);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 44);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(396, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(536, 150);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(393, 235);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox7.TabIndex = 8;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(377, 270);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(74, 16);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Seleccionar";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // comboseEstado
+            // 
+            this.comboseEstado.FormattingEnabled = true;
+            this.comboseEstado.Items.AddRange(new object[] {
+            "disponible",
+            "bloqueado",
+            "fuera de servicio"});
+            this.comboseEstado.Location = new System.Drawing.Point(699, 134);
+            this.comboseEstado.Name = "comboseEstado";
+            this.comboseEstado.Size = new System.Drawing.Size(121, 21);
+            this.comboseEstado.TabIndex = 21;
+            this.comboseEstado.SelectedIndexChanged += new System.EventHandler(this.comboseEstado_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(578, 135);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(119, 16);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Estado para iniciar:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(578, 101);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 16);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Contraseña:";
+            // 
+            // textseContra
+            // 
+            this.textseContra.Location = new System.Drawing.Point(699, 101);
+            this.textseContra.Name = "textseContra";
+            this.textseContra.Size = new System.Drawing.Size(100, 20);
+            this.textseContra.TabIndex = 18;
+            // 
+            // textseNombre
+            // 
+            this.textseNombre.Location = new System.Drawing.Point(699, 58);
+            this.textseNombre.Name = "textseNombre";
+            this.textseNombre.Size = new System.Drawing.Size(100, 20);
+            this.textseNombre.TabIndex = 17;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(578, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 16);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Nombre completo:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(578, 24);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 16);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Cedula:";
+            // 
+            // textseCedula
+            // 
+            this.textseCedula.Location = new System.Drawing.Point(699, 24);
+            this.textseCedula.Name = "textseCedula";
+            this.textseCedula.Size = new System.Drawing.Size(100, 20);
+            this.textseCedula.TabIndex = 14;
+            // 
+            // comboseTipo
+            // 
+            this.comboseTipo.FormattingEnabled = true;
+            this.comboseTipo.Items.AddRange(new object[] {
+            "Gerente",
+            "Adminstrador de compras",
+            "Recepcionista"});
+            this.comboseTipo.Location = new System.Drawing.Point(699, 178);
+            this.comboseTipo.Name = "comboseTipo";
+            this.comboseTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboseTipo.TabIndex = 23;
+            this.comboseTipo.SelectedIndexChanged += new System.EventHandler(this.comboseTipo_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(578, 178);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(99, 16);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "Tipo de usuario:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(-1, 219);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(1195, 13);
+            this.label16.TabIndex = 24;
+            this.label16.Text = resources.GetString("label16.Text");
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(32, 95);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(536, 150);
+            this.dataGridView2.TabIndex = 15;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(49, 47);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(504, 150);
+            this.dataGridView3.TabIndex = 0;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(589, 47);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox8.TabIndex = 1;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(576, 82);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(54, 16);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Eliminar";
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(29, 59);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(430, 150);
+            this.dataGridView4.TabIndex = 1;
             // 
             // Gerencia
             // 
@@ -441,10 +643,18 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -457,12 +667,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;
@@ -482,5 +690,23 @@
         private System.Windows.Forms.ComboBox combotipousuario;
         private System.Windows.Forms.ComboBox comboestado;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.ComboBox comboseTipo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboseEstado;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textseContra;
+        private System.Windows.Forms.TextBox textseNombre;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textseCedula;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridView4;
     }
 }
