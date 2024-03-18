@@ -56,20 +56,20 @@ namespace hotels_worldwiden
         {
             try
             {
-                string selectQuery = "SELECT usuarioID, contraseña, estado FROM Usuarios WHERE CAST(usuarioID AS NVARCHAR(50)) = @usuarioID";
+                string selectQuery = "SELECT cedula, contraseña, estado FROM Usuarios WHERE CAST(cedula AS NVARCHAR(50)) = @cedula";
 
                 using (SqlConnection connection = Conexion.Conectar())
                 {
                     using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        cmd.Parameters.Add("@usuarioID", SqlDbType.NVarChar).Value = textcedula.Text;
+                        cmd.Parameters.Add("@cedula", SqlDbType.NVarChar).Value = textcedula.Text;
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 // Se encontró el usuario, ahora verifica la clave
-                                string cedulaEnBaseDeDatos = reader["usuarioID"].ToString();
+                                string cedulaEnBaseDeDatos = reader["cedula"].ToString();
                                 string claveEnBaseDeDatos = reader["contraseña"].ToString();
                                 string estadoEnbaseDeDatos = reader["estado"].ToString();
 
@@ -83,14 +83,14 @@ namespace hotels_worldwiden
                                         // Consulta el rol del usuario
                                         string consultaRol = "SELECT r.Descripcion FROM Usuarios " +
                                                             "INNER JOIN tipoUsuario AS r ON Usuarios.TipoUsuarioID = r.TipoUsuarioID " +
-                                                            "WHERE usuarioID = @usuarioID";
+                                                            "WHERE cedula = @cedula";
 
                                         // Cierra el primer DataReader antes de abrir el segundo
                                         reader.Close();
 
                                         using (SqlCommand cmdRol = new SqlCommand(consultaRol, connection))
                                         {
-                                            cmdRol.Parameters.Add("@usuarioID", SqlDbType.NVarChar).Value = textcedula.Text;
+                                            cmdRol.Parameters.Add("@cedula", SqlDbType.NVarChar).Value = textcedula.Text;
 
                                             using (SqlDataReader readerRol = cmdRol.ExecuteReader())
                                             {
