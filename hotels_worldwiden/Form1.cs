@@ -98,8 +98,33 @@ namespace hotels_worldwiden
                                                 {
                                                     string nombreRol = readerRol["Descripcion"].ToString();
 
-                                                    // Oculta la pantalla de inicio de sesión (login)
-                                                    this.Hide();
+                                                    if (nombreRol == "Gerente" || nombreRol == "Recepcionista" || nombreRol == "Comprador")
+                                                    {
+                                                        // Insertar en la bitácora
+                                                        try
+                                                        {
+                                                            using (SqlConnection bitacoraConnection = Conexion.Conectar()) // Nueva conexión para la bitácora
+                                                            {
+                                                                string query = "INSERT INTO Bitacora (fecha, accion, detalle, cedula) VALUES (@fecha, @accion, @detalle, @cedula)";
+
+                                                                using (SqlCommand cmd2 = new SqlCommand(query, bitacoraConnection))
+                                                                {
+                                                                    cmd2.Parameters.AddWithValue("@fecha", DateTime.Now);
+                                                                    cmd2.Parameters.AddWithValue("@accion", "Ingreso");
+                                                                    cmd2.Parameters.AddWithValue("@detalle", "Usuario ingresó al sistema correctamente");
+                                                                    cmd2.Parameters.AddWithValue("@cedula", cedulaEnBaseDeDatos); // Utiliza la cédula del usuario autenticado
+
+                                                                    cmd2.ExecuteNonQuery();
+                                                                }
+                                                            }
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            MessageBox.Show("Error al insertar en bitácora: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                        }
+
+                                                        // Oculta la pantalla de inicio de sesión (login)
+                                                        this.Hide();
 
                                                     // Abre la pantalla correspondiente al rol
                                                     if (nombreRol == "Gerente")
@@ -118,7 +143,7 @@ namespace hotels_worldwiden
                                                         comprador.ShowDialog();
                                                     }
 
-
+                                                    }
                                                 }
                                             }
                                         }

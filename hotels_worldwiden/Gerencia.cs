@@ -32,7 +32,7 @@ namespace hotels_worldwiden
             dataGridView1.DataSource = Obtenerusuarios();
             dataGridView2.DataSource = Obtenerusuarios();
             dataGridView3.DataSource = Obtenerusuarios();
-            dataGridView4.DataSource = Obtenerusuarios();
+            dataGridView4.DataSource = ObtenerBitacora();
         }
         public DataTable Obtenerusuarios()
         {
