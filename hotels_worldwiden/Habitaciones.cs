@@ -27,6 +27,7 @@ namespace hotels_worldwiden
         private void Habitaciones_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = ObtenerHabitacioneslibres();
+            dataGridView2.DataSource = ObtenerHabitacionesOcupadas();
         }
 
         public DataTable ObtenerHabitacioneslibres()
@@ -37,6 +38,38 @@ namespace hotels_worldwiden
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
+        }
+        public DataTable ObtenerHabitacionesOcupadas()
+        {
+            DataTable dt = new DataTable();
+            string consulta = "select habitacionID, categoria, PrecioPorPersona, estado from Habitaciones where estado = 'ocupada'";
+            SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 back_login = new Form1();
+            back_login.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resp == DialogResult.Yes)
+            {
+                // Cierra la aplicación cuando se cierra el formulario correspondiente al rol
+                Application.Exit();
+            }
         }
     }
 }
