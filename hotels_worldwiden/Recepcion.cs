@@ -28,5 +28,31 @@ namespace hotels_worldwiden
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Habitaciones habitacion = new Habitaciones();
+            habitacion.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 back_login = new Form1();
+            back_login.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Reservas reserva = new Reservas();
+            reserva.ShowDialog();
+        }
     }
 }

@@ -59,9 +59,10 @@ namespace hotels_worldwiden
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+
             this.Hide();
-            Form1 back_login = new Form1();
-            back_login.ShowDialog();
+            Recepcion recepcion = new Recepcion();
+            recepcion.ShowDialog();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -329,6 +330,11 @@ namespace hotels_worldwiden
 
 
             ejecutarReserva();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
