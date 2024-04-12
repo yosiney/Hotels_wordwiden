@@ -98,7 +98,7 @@ namespace hotels_worldwiden
                                                 {
                                                     string nombreRol = readerRol["Descripcion"].ToString();
 
-                                                    if (nombreRol == "Gerente" || nombreRol == "Recepcionista" || nombreRol == "Comprador")
+                                                    if (nombreRol == "Gerente" || nombreRol == "Recepsionista" || nombreRol == "Comprador")
                                                     {
                                                         // Insertar en la bitácora
                                                         try
