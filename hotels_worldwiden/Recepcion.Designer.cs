@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(389, 16);
+            this.label1.Location = new System.Drawing.Point(446, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(118, 215);
+            this.button1.Location = new System.Drawing.Point(230, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(248, 78);
             this.button1.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(372, 215);
+            this.button2.Location = new System.Drawing.Point(484, 209);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(254, 78);
             this.button2.TabIndex = 2;
@@ -90,6 +90,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // groupBox3
             // 
@@ -102,16 +103,18 @@
             this.groupBox3.Size = new System.Drawing.Size(1005, 60);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // Recepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(221)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(992, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1008, 450);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Recepcion";
             this.Text = "Recepcion";
             this.Load += new System.EventHandler(this.Recepcion_Load);

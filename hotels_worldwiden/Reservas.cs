@@ -30,5 +30,22 @@ namespace hotels_worldwiden
         {
             dataGridView1.DataSource = Obtenerreservas();   
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Recepcion back_recepcion = new Recepcion();
+            back_recepcion.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resp == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace hotels_worldwiden
         public DataTable ObtenerHabitacionesOcupadas()
         {
             DataTable dt = new DataTable();
-            string consulta = "SELECT R.ReservaID, R.estado AS estadoReserva, H.HabitacionID, H.categoria, H.estado AS estadoHabitacion\r\nFROM Reservas AS R\r\nINNER JOIN Habitaciones AS H ON R.HabitacionID = H.HabitacionID\r\nWHERE H.estado = 'ocupada';";
+            string consulta = "SELECT R.ReservaID, R.estado AS estadoReserva, H.HabitacionID, H.categoria, H.estado AS estadoHabitacion\r\nFROM Reservas AS R\r\nINNER JOIN Habitaciones AS H ON R.HabitacionID = H.HabitacionID\r\nWHERE H.estado = 'ocupada' AND R.estado = 'activa';\r\n";
             SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -239,8 +239,8 @@ namespace hotels_worldwiden
             string disponible = "disponible";
             string finalizada = "finalizada";
 
-            int NumeroHabitacion = int.Parse(textdesocupar.Text);
-            int NumeroReservacion = int.Parse(textfinalizarreserva.Text);
+            int NumeroHabitacion = int.Parse(textDesocupa.Text);
+            int NumeroReservacion = int.Parse(textfinalizar.Text);
             try
             {
                 using (SqlConnection connection = Conexion.Conectar())
@@ -255,7 +255,7 @@ namespace hotels_worldwiden
 
                     }
 
-                    string queryreserva = "UPDATE Reservas SET estado = @estado WHERE HabitacionID = " + NumeroReservacion + "";
+                    string queryreserva = "UPDATE Reservas SET estado = @estado WHERE ReservaID = " + NumeroReservacion + "";
 
                     using (SqlCommand cmd1 = new SqlCommand(queryreserva, connection))
                     {
@@ -285,8 +285,8 @@ namespace hotels_worldwiden
                 string categoria = filaSeleccionada.Cells["categoria"].Value.ToString();
                 string EstadoHabitacion = filaSeleccionada.Cells["estadoHabitacion"].Value.ToString();
 
-                textdesocupar.Text = ReservaID.ToString();
-                textfinalizarreserva.Text = habitacionID.ToString();
+                textfinalizar.Text = ReservaID.ToString();
+                textDesocupa.Text = habitacionID.ToString();
             }
         }
 
@@ -335,6 +335,11 @@ namespace hotels_worldwiden
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = ObtenerHabitacionesOcupadas();
         }
     }
 }

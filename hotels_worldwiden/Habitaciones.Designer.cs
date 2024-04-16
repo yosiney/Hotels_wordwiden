@@ -68,8 +68,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textfinalizarreserva = new System.Windows.Forms.TextBox();
-            this.textdesocupar = new System.Windows.Forms.TextBox();
+            this.textDesocupa = new System.Windows.Forms.TextBox();
+            this.textfinalizar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -77,6 +77,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -451,6 +452,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(221)))), ((int)(((byte)(203)))));
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label15);
@@ -467,8 +469,8 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(221)))), ((int)(((byte)(210)))));
             this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Controls.Add(this.textfinalizarreserva);
-            this.groupBox4.Controls.Add(this.textdesocupar);
+            this.groupBox4.Controls.Add(this.textDesocupa);
+            this.groupBox4.Controls.Add(this.textfinalizar);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Location = new System.Drawing.Point(636, 60);
@@ -489,19 +491,19 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // textfinalizarreserva
+            // textDesocupa
             // 
-            this.textfinalizarreserva.Location = new System.Drawing.Point(200, 53);
-            this.textfinalizarreserva.Name = "textfinalizarreserva";
-            this.textfinalizarreserva.Size = new System.Drawing.Size(100, 20);
-            this.textfinalizarreserva.TabIndex = 2;
+            this.textDesocupa.Location = new System.Drawing.Point(200, 53);
+            this.textDesocupa.Name = "textDesocupa";
+            this.textDesocupa.Size = new System.Drawing.Size(100, 20);
+            this.textDesocupa.TabIndex = 2;
             // 
-            // textdesocupar
+            // textfinalizar
             // 
-            this.textdesocupar.Location = new System.Drawing.Point(200, 103);
-            this.textdesocupar.Name = "textdesocupar";
-            this.textdesocupar.Size = new System.Drawing.Size(100, 20);
-            this.textdesocupar.TabIndex = 8;
+            this.textfinalizar.Location = new System.Drawing.Point(200, 103);
+            this.textfinalizar.Name = "textfinalizar";
+            this.textfinalizar.Size = new System.Drawing.Size(100, 20);
+            this.textfinalizar.TabIndex = 8;
             // 
             // label1
             // 
@@ -574,6 +576,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(382, 232);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Refrescar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Habitaciones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -616,7 +628,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textfinalizarreserva;
+        private System.Windows.Forms.TextBox textDesocupa;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textCantidadP;
         private System.Windows.Forms.Label label4;
@@ -647,7 +659,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textCeRecepcionista;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textdesocupar;
+        private System.Windows.Forms.TextBox textfinalizar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button4;
@@ -655,5 +667,6 @@
         private System.Windows.Forms.Label labelpreciopersona;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labelReserva;
+        private System.Windows.Forms.Button button1;
     }
 }

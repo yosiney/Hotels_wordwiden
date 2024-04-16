@@ -54,5 +54,20 @@ namespace hotels_worldwiden
             Reservas reserva = new Reservas();
             reserva.ShowDialog();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resp == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

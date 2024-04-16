@@ -27,5 +27,22 @@ namespace hotels_worldwiden
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 back_login = new Form1();
+            back_login.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resp == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
