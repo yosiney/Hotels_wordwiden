@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace hotels_worldwiden
                 (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                 (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
                 );
+
+            
         }
 
         private void Administracion_compras_Load(object sender, EventArgs e)
@@ -42,6 +45,52 @@ namespace hotels_worldwiden
             if (resp == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text) ||
+                string.IsNullOrEmpty(textBox2.Text) ||
+                string.IsNullOrEmpty(textBox3.Text) ||
+                string.IsNullOrEmpty(textBox4.Text) ||
+                string.IsNullOrEmpty(textBox5.Text))
+            {
+                MessageBox.Show("Hay campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                DateTime fechaActual = DateTime.Now;
+                string solicitado = "solicitado";
+
+                using (SqlConnection connection = Conexion.Conectar())
+                {
+
+                    string queryreserva = "insert into Compras (producto, cantidad, precioUnitario, descripcion, fechaSolicitud, estado, cedula, ProveedorID) values (@producto, @cantidad, @precioUnitario, @descripcion, @fechaSolicitud, @estado, @cedula, @ProveedorID)";
+
+                    using (SqlCommand cmd1 = new SqlCommand(queryreserva, connection))
+                    {
+                        cmd1.Parameters.AddWithValue("@producto", textBox1.Text);
+                        cmd1.Parameters.AddWithValue("@cantidad", int.Parse(textBox2.Text));
+                        cmd1.Parameters.AddWithValue("@precioUnitario", int.Parse(textBox3.Text));
+                        cmd1.Parameters.AddWithValue("@descripcion", textBox4.Text);
+                        cmd1.Parameters.AddWithValue("@fechaSolicitud", fechaActual);
+                        cmd1.Parameters.AddWithValue("@estado", solicitado);
+                        cmd1.Parameters.AddWithValue("@cedula", int.Parse(textBox5.Text));
+                        cmd1.ExecuteNonQuery();
+
+                    }
+
+                }
+
+                MessageBox.Show("Solicitud de compra realizada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al hacer la solicitud " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
