@@ -334,7 +334,7 @@ namespace hotels_worldwiden
 
 
 
-            ejecutarReserva();
+
 
 
         }
@@ -373,32 +373,37 @@ namespace hotels_worldwiden
                 decimal montoPagado = decimal.Parse(textBox1.Text);
                 int tipocambio = 600;
 
-                if (montoPagado > precioTotal) 
-                {
-                    decimal vuelto = montoPagado - precioTotal;
+                decimal cobrarEndolar = precioTotal / tipocambio;
+
+                if (montoPagado >= cobrarEndolar) // Cambié ">" por ">=" para incluir el caso en que el monto pagado sea igual al precio total.
+                {   
+                    
+                    decimal vuelto = montoPagado - cobrarEndolar;
 
                     // Verificar si la moneda seleccionada es dólares y convertir el vuelto a colones si es necesario
                     if (comboTipoMoneda.SelectedItem.ToString() == "Dolar")
                     {
-                        int vueltocolon =
-
-
+                        decimal vueltocolon = tipocambio * vuelto;
+                        vueltocolon = Math.Round(vueltocolon, 2); // Redondear a dos decimales
+                        MessageBox.Show($"El vuelto es: {vueltocolon} colones");
+                    }
+                    else
+                    {
+                        vuelto = Math.Round(vuelto, 2); // Redondear a dos decimales
+                        MessageBox.Show($"El vuelto es: {vuelto}");
                     }
 
-                    MessageBox.Show($"El vuelto es: "+ vuelto+ "");
-
-                }else
-                {
-                    MessageBox.Show($"esta pagando con menos");
                 }
-                
-
-
+                else
+                {
+                    MessageBox.Show($"Error, está pagando con menos");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al calcular el vuelto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
