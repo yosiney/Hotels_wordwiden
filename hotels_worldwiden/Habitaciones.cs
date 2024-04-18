@@ -318,10 +318,29 @@ namespace hotels_worldwiden
                     cmdAgregarUsario.Parameters.AddWithValue("@tipoMoneda", comboTipoMoneda.Text);
                     cmdAgregarUsario.Parameters.AddWithValue("@ReservaID", int.Parse(labelReserva.Text));
                     cmdAgregarUsario.ExecuteNonQuery();
-                    MessageBox.Show("Se ha creado el la reserva!!!");
+                    
                 }
-                
-             }
+
+                switch (combotipodepago.SelectedItem.ToString())
+                {
+                    case "Efectivo":
+                        groupBox5.Visible = true;
+                        groupBox7.Visible = false;
+                        groupBox6.Visible = false;
+                        break;
+                    case "Tarjeta":
+                        groupBox7.Visible = true;
+                        groupBox6.Visible = false;
+                        groupBox5.Visible = false;
+                        break;
+                    default:
+                        groupBox6.Visible = true;
+                        groupBox5.Visible = false;
+                        groupBox7.Visible = false;
+                        break;
+                }
+
+            }
               catch (Exception ex)
              {
 
@@ -329,7 +348,8 @@ namespace hotels_worldwiden
             }
 
 
-            groupBox5.Visible = true;
+
+
 
 
 
@@ -375,29 +395,55 @@ namespace hotels_worldwiden
 
                 decimal cobrarEndolar = precioTotal / tipocambio;
 
-                if (montoPagado >= cobrarEndolar) // Cambié ">" por ">=" para incluir el caso en que el monto pagado sea igual al precio total.
-                {   
-                    
-                    decimal vuelto = montoPagado - cobrarEndolar;
-
-                    // Verificar si la moneda seleccionada es dólares y convertir el vuelto a colones si es necesario
-                    if (comboTipoMoneda.SelectedItem.ToString() == "Dolar")
+                if (comboTipoMoneda.SelectedItem.ToString() == "Colon")
+                {
+                    if (montoPagado >= precioTotal)
                     {
-                        decimal vueltocolon = tipocambio * vuelto;
-                        vueltocolon = Math.Round(vueltocolon, 2); // Redondear a dos decimales
-                        MessageBox.Show($"El vuelto es: {vueltocolon} colones");
+
+                        decimal vuelto = montoPagado - precioTotal;
+
+
+                        MessageBox.Show($"El vuelto es: {vuelto} colones");
+
                     }
                     else
                     {
-                        vuelto = Math.Round(vuelto, 2); // Redondear a dos decimales
-                        MessageBox.Show($"El vuelto es: {vuelto}");
+                        MessageBox.Show($"Error, está pagando con menos");
                     }
-
                 }
                 else
                 {
-                    MessageBox.Show($"Error, está pagando con menos");
+                    if (montoPagado >= cobrarEndolar)
+                    {
+
+                        decimal vuelto = montoPagado - cobrarEndolar;
+
+                        // Verificar si la moneda seleccionada es dólares y convertir el vuelto a colones si es necesario
+                        if (comboTipoMoneda.SelectedItem.ToString() == "Dolar")
+                        {
+                            decimal vueltocolon = tipocambio * vuelto;
+                            vueltocolon = Math.Round(vueltocolon, 2); // Redondear a dos decimales
+                            MessageBox.Show($"El vuelto es: {vueltocolon} colones");
+                            MessageBox.Show("Se ha creado la factura!!!");
+                            
+                        }
+                        else
+                        {
+                            vuelto = Math.Round(vuelto, 2); // Redondear a dos decimales
+                            MessageBox.Show($"El vuelto es: {vuelto}");
+                            MessageBox.Show("Se ha creado la factura!!!");
+                            limpiartodo();
+                        }
+                        textBox1.Text = "";
+                        groupBox5.Visible = false;
+                        limpiartodo();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error, está pagando con menos");
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -409,6 +455,126 @@ namespace hotels_worldwiden
 
 
         private void labelReserva_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal precioTotal = decimal.Parse(labelTotal.Text);
+                decimal precioPersona = decimal.Parse(labelpreciopersona.Text);
+                decimal montoEfectivo = decimal.Parse(textBox2.Text);
+                decimal montoTarjeta = decimal.Parse(textBox3.Text); // Supongamos que el monto con tarjeta se ingresa en otro campo
+                int tipocambio = 600;
+
+                // Calcular el total pagado
+                decimal totalPagado = montoEfectivo + montoTarjeta;
+
+                decimal cobrarEndolar = precioTotal / tipocambio;
+
+                if (comboTipoMoneda.SelectedItem.ToString() == "Colon")
+                {
+                    if (totalPagado >= precioTotal)
+                    {
+                        decimal vuelto = totalPagado - precioTotal;
+                        MessageBox.Show($"El vuelto es: {vuelto} colones");
+                        MessageBox.Show("Se ha creado la factura!!!");
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        groupBox6.Visible = false;
+                        limpiartodo();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error, está pagando con menos");
+                    }
+                }
+                else // En este caso, se asume que el tipo de moneda es "Dolar"
+                {
+                    if (totalPagado >= cobrarEndolar)
+                    {
+                        decimal vueltoEnDolares = totalPagado - cobrarEndolar;
+
+                        // Convertir el vuelto en dólares a colones si es necesario
+                        decimal vueltoEnColones = tipocambio * vueltoEnDolares;
+                        vueltoEnColones = Math.Round(vueltoEnColones, 2); // Redondear a dos decimales
+
+                        MessageBox.Show($"El vuelto es: {vueltoEnColones} colones");
+                        MessageBox.Show("Se ha creado la factura!!!");
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        groupBox6.Visible = false;
+                        limpiartodo();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error, está pagando con menos");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular el vuelto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal precioTotal = decimal.Parse(labelTotal.Text);
+                decimal montoTarjeta = decimal.Parse(textBox4.Text);
+                int tipocambio = 600;
+
+                decimal cobrarEndolar = precioTotal / tipocambio;
+
+                if (montoTarjeta >= cobrarEndolar)
+                {
+                    MessageBox.Show("Pago realizado con tarjeta correctamente.");
+                    MessageBox.Show("Se ha creado la factura!!!");
+                    textBox4.Text = "";
+                    groupBox7.Visible = false;
+                    limpiartodo();
+                }
+                else
+                {
+                    MessageBox.Show($"Error, el monto pagado con tarjeta es insuficiente");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al procesar el pago con tarjeta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void limpiartodo() 
+        {
+            labelReserva.Text = "_____";
+            labelpreciopersona.Text = "_____";
+            labelTotal.Text = "_____";
+
+            combotipodepago.Text = "";
+            comboTipoMoneda.Text = "";
+            textObservaciones.Text = "";
+
+            textCeRecepcionista.Text = "";
+            texthabitacionID.Text = "";
+            textCantidadP.Text = "";
+            TextCedulaCliente.Text = "";
+            textNombreCliente.Text = "";
+            dateInicio.Text = "";
+            dateFin.Text = "";
+
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = true;
+
+        }
+
+
+        private void label18_Click(object sender, EventArgs e)
         {
 
         }
