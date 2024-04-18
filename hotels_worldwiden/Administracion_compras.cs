@@ -12,7 +12,9 @@ using System.Windows.Forms;
 namespace hotels_worldwiden
 {
     public partial class Administracion_compras : Form
+
     {
+
         public Administracion_compras()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace hotels_worldwiden
                 (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
                 );
 
-            
+           
         }
 
         private void Administracion_compras_Load(object sender, EventArgs e)
@@ -50,6 +52,9 @@ namespace hotels_worldwiden
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int Proveedor = 0;
+            string seleccionProveedor = comboBox1.SelectedItem.ToString();
+
             if (string.IsNullOrEmpty(textBox1.Text) ||
                 string.IsNullOrEmpty(textBox2.Text) ||
                 string.IsNullOrEmpty(textBox3.Text) ||
@@ -62,6 +67,34 @@ namespace hotels_worldwiden
 
             try
             {
+
+
+                switch (seleccionProveedor)
+                {
+                    case "maxipali":
+                        Proveedor = 1;
+                        break;
+                    case "teleria":
+                        Proveedor = 2;
+                        break;
+                    case "colono":
+                        Proveedor = 3;
+                        break;
+                    case "carniceria":
+                        Proveedor = 4;
+                        break;
+                    case "ferreteria":
+                        Proveedor = 5;
+                        break;
+                    case "muebleria":
+                        Proveedor = 6;
+                        break;
+                    default:
+                        MessageBox.Show("Proveedor desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+
+
                 DateTime fechaActual = DateTime.Now;
                 string solicitado = "solicitado";
 
@@ -79,6 +112,7 @@ namespace hotels_worldwiden
                         cmd1.Parameters.AddWithValue("@fechaSolicitud", fechaActual);
                         cmd1.Parameters.AddWithValue("@estado", solicitado);
                         cmd1.Parameters.AddWithValue("@cedula", int.Parse(textBox5.Text));
+                        cmd1.Parameters.AddWithValue("@ProveedorID", Proveedor);
                         cmd1.ExecuteNonQuery();
 
                     }
