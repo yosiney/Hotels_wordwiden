@@ -26,9 +26,19 @@ namespace hotels_worldwiden
             da.Fill(dt);
             return dt;
         }
+        public DataTable Obtenerfacturas()
+        {
+            DataTable dt = new DataTable();
+            string consulta = "select * from Factura";
+            SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
         private void Reservas_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Obtenerreservas();   
+            dataGridView1.DataSource = Obtenerreservas();
+            dataGridView2.DataSource = Obtenerfacturas();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

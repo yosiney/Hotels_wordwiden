@@ -16,7 +16,7 @@ namespace hotels_worldwiden
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Administracion_compras());
+            Application.Run(new Habitaciones());
         }
     }
 }

@@ -27,10 +27,27 @@ namespace hotels_worldwiden
 
            
         }
-
+        public DataTable ObtenerSolicitudes()
+        {
+            DataTable dt = new DataTable();
+            string consulta = "SELECT * FROM Compras";
+            SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable ObtenerInventario()
+        {
+            DataTable dt = new DataTable();
+            string consulta = "SELECT * FROM Inventario";
+            SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
         private void Administracion_compras_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.DataSource = ObtenerSolicitudes();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -126,6 +143,79 @@ namespace hotels_worldwiden
             {
                 MessageBox.Show("Error al hacer la solicitud " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Compra_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dataGridView1.CurrentRow;
+
+            if (filaSeleccionada != null)
+            {
+                int CompraID = Convert.ToInt32(filaSeleccionada.Cells["CompraID"].Value);
+                string producto = filaSeleccionada.Cells["producto"].Value.ToString();
+                int cantidad = Convert.ToInt32(filaSeleccionada.Cells["cantidad"].Value);
+                float PrecioUnitario = Convert.ToInt32(filaSeleccionada.Cells["CompraID"].Value);
+                string descripcion = filaSeleccionada.Cells["descripcion"].Value.ToString();
+                string fechaSolicitud = filaSeleccionada.Cells["fechaSolicitud"].Value.ToString();
+                string estado = filaSeleccionada.Cells["estado"].Value.ToString();
+                int cedula = Convert.ToInt32(filaSeleccionada.Cells["cedula"].Value);
+
+
+
+                try
+                {
+                    using (SqlConnection connection = Conexion.Conectar())
+                    {
+                        string queryinsert = "insert into Inventario (producto, cantidad, precioUnitario, cedula) values (@producto, @cantidad, @precioUnitario, @cedula)";
+
+                        using (SqlCommand cmd1 = new SqlCommand(queryinsert, connection))
+                        {
+                            cmd1.Parameters.AddWithValue("@producto", producto);
+                            cmd1.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd1.Parameters.AddWithValue("@precioUnitario", PrecioUnitario);
+                            cmd1.Parameters.AddWithValue("@descripcion", descripcion);
+                            cmd1.Parameters.AddWithValue("@fechaSolicitud", fechaSolicitud);
+                            cmd1.Parameters.AddWithValue("@estado", estado);
+                            cmd1.Parameters.AddWithValue("@cedula", cedula);
+                            
+                            cmd1.ExecuteNonQuery();
+
+                        }
+
+                        string  queryupdate = "UPDATE Compras SET estado = 'Recibido' WHERE CompraID = @CompraID;";
+
+                        using (SqlCommand cmd1 = new SqlCommand(queryupdate, connection))
+                        {
+                            cmd1.Parameters.AddWithValue("@CompraID", CompraID);
+                            cmd1.ExecuteNonQuery();
+
+                        }
+
+                    }
+
+                    MessageBox.Show("Solicitud de compra realizada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al hacer la solicitud " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = ObtenerSolicitudes();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = ObtenerInventario();
         }
     }
 }

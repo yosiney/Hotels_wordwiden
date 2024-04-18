@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace hotels_worldwiden
 {
@@ -325,11 +326,17 @@ namespace hotels_worldwiden
              {
 
                 MessageBox.Show("Error al crear el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
+            }
+
+
+            groupBox5.Visible = true;
+
 
 
 
             ejecutarReserva();
+
+
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -340,6 +347,65 @@ namespace hotels_worldwiden
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView2.DataSource = ObtenerHabitacionesOcupadas();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = ObtenerHabitacioneslibres();
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal precioTotal = decimal.Parse(labelTotal.Text);
+                decimal precioPersona = decimal.Parse(labelpreciopersona.Text);
+                decimal montoPagado = decimal.Parse(textBox1.Text);
+                int tipocambio = 600;
+
+                if (montoPagado > precioTotal) 
+                {
+                    decimal vuelto = montoPagado - precioTotal;
+
+                    // Verificar si la moneda seleccionada es dólares y convertir el vuelto a colones si es necesario
+                    if (comboTipoMoneda.SelectedItem.ToString() == "Dolar")
+                    {
+                        int vueltocolon =
+
+
+                    }
+
+                    MessageBox.Show($"El vuelto es: "+ vuelto+ "");
+
+                }else
+                {
+                    MessageBox.Show($"esta pagando con menos");
+                }
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular el vuelto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void labelReserva_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
