@@ -48,6 +48,7 @@ namespace hotels_worldwiden
         private void Administracion_compras_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = ObtenerSolicitudes();
+            dataGridView2.DataSource = ObtenerInventario();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

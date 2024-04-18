@@ -13,4 +13,3 @@ C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administra
 C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Recepcion.resources
 C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Habitaciones.resources
 C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Reservas.resources
-C:\Users\yosin\Documents\Universidad\Cuatri 7\diseño de aplicaciones administrativas\Project\hotels_worldwiden\obj\Debug\hotels_worldwiden.Efectivo.resources
