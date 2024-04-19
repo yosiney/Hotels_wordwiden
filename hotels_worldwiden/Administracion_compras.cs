@@ -66,6 +66,27 @@ namespace hotels_worldwiden
             {
                 Application.Exit();
             }
+            try
+            {
+                using (SqlConnection bitacoraConnection = Conexion.Conectar())
+                {
+                    string query = "INSERT INTO Bitacora (fecha, accion, detalle, cedula) VALUES (@fecha, @accion, @detalle, @cedula)";
+
+                    using (SqlCommand cmd2 = new SqlCommand(query, bitacoraConnection))
+                    {
+                        cmd2.Parameters.AddWithValue("@fecha", DateTime.Now);
+                        cmd2.Parameters.AddWithValue("@accion", "Salida");
+                        cmd2.Parameters.AddWithValue("@detalle", "Usuario Salio del sistema correctamente");
+                        cmd2.Parameters.AddWithValue("@cedula", 333);
+
+                        cmd2.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al insertar en bitácora: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
