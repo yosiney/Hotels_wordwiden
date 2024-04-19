@@ -210,8 +210,12 @@ namespace hotels_worldwiden
                 decimal PrecioTotalPorPagar = cantidadPersonasp * precioHabitacion;
 
                 ObtenerReservaID();
-                
-                labelTotal.Text = PrecioTotalPorPagar.ToString();
+
+                decimal iva = 0.13m;
+
+                decimal totalconIva = PrecioTotalPorPagar * iva + PrecioTotalPorPagar;
+
+                labelTotal.Text = totalconIva.ToString();
                 labelpreciopersona.Text = precioHabitacion.ToString();
 
                 groupBox1.Enabled = true;
@@ -404,7 +408,9 @@ namespace hotels_worldwiden
 
 
                         MessageBox.Show($"El vuelto es: {vuelto} colones");
-
+                        textBox1.Text = "";
+                        groupBox5.Visible = false;
+                        limpiartodo();
                     }
                     else
                     {

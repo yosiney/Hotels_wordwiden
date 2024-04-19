@@ -33,6 +33,16 @@ namespace hotels_worldwiden
             dataGridView2.DataSource = Obtenerusuarios();
             dataGridView3.DataSource = Obtenerusuarios();
             dataGridView4.DataSource = ObtenerBitacora();
+            dataGridView5.DataSource = ObtenerIva();
+        }
+        public DataTable ObtenerIva() 
+        {
+            DataTable dt = new DataTable();
+            string consulta = "SELECT IvaID, Iva from Iva where IvaID = 1";
+            SqlCommand cmd = new SqlCommand(consulta, Conexion.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
         public DataTable Obtenerusuarios()
         {
@@ -309,6 +319,51 @@ namespace hotels_worldwiden
             else
             {
                 MessageBox.Show("Selecciona un usuario antes de intentar eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dataGridView5.CurrentRow;
+
+            if (filaSeleccionada != null)
+            {
+                decimal Iva = Convert.ToDecimal(filaSeleccionada.Cells["Iva"].Value);
+                decimal IvaID = Convert.ToDecimal(filaSeleccionada.Cells["IvaID"].Value);
+
+                textBox1.Text = Iva.ToString();
+            }
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = Conexion.Conectar())
+                {
+                    decimal newIva = Convert.ToDecimal(textBox1.Text);
+                    string queryIva = "UPDATE Iva SET Iva = @Iva WHERE IvaID = 1";
+
+                    using (SqlCommand cmd1 = new SqlCommand(queryIva, connection))
+                    {
+                        cmd1.Parameters.AddWithValue("@Iva", newIva);
+                        cmd1.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Iva actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView5.DataSource = ObtenerIva();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al desocupar la habitacion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
